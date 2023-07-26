@@ -1,0 +1,24 @@
+# ----
+# This modules should already be installed by default by installing the packages above
+
+Flask==2.1.0
+# itsdangerous
+# Jinja2
+# MarkupSafe
+# Werkzeug
+
+# ---
+# Gunicorn module
+
+gunicorn==20.1.0
+
+# ---
+# Base python packages
+
+flask-cors
+apiflask
+
+# ---
+# AWS modules
+
+boto3
