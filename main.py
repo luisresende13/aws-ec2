@@ -65,18 +65,20 @@ app.config['TAGS'] = [{
     "description": "Server information"
 }]
 
-cloudRunServerURL = 'https://octa-vision-oayt5ztuxq-ue.a.run.app'
+cloudRunServerURL = 'https://aws-ec2-oayt5ztuxq-ue.a.run.app'
+  
+instance_id = 'i-01796a60ab18b8bd5'
+ip = get_public_ipv4(instance_id)
 
-try:
-    awsIP = requests.get(f"{cloudRunServerURL}/ip").text
-except:
-    awsIP = ''
+awsIP = ''
+if 'ip' in ip:
+    awsIP = ip['ip']
     
 # openapi.servers
 app.config['SERVERS'] = [{
-#     'name': 'AWS NVIDIA Server',
-#     'url': f"http://{awsIP}"
-# }, {
+    'name': 'AWS NVIDIA Server',
+    'url': f"http://{awsIP}"
+}, {
     'name': 'Google Cloud Run Server',
     'url': cloudRunServerURL
 }, {
